@@ -1,9 +1,7 @@
-const { Sequelize, DataTypes } = require('sequelize')
-
-module.exports = (sequelize) => {
- const Item = sequelize.define(
-    'Item', {
-       available: DataTypes.BOOLEAN
-    }
- )
-}
+export default (sequelize, Sequelize) => sequelize.define(
+      'Item', {
+         available: {
+            type: Sequelize.DataTypes.BOOLEAN
+         }
+      }
+   )

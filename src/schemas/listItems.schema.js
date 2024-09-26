@@ -1,11 +1,7 @@
-const { Sequelize, DataTypes } = require('sequelize')
-
-module.exports = (sequelize) => {
- const ListItem = sequelize.define(
+export default (sequelize, Sequelize) => sequelize.define(
     'ListItem', {
         libelle: {
-            type: DataTypes.STRING
+            type: Sequelize.DataTypes.STRING
         }
     }
  )
-}

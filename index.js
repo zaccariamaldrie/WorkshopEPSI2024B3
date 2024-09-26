@@ -1,27 +1,20 @@
-const express = require('express')
-const { Sequelize } = require('sequelize')
+import express from "express"
+import database from "./src/cfg/database.js"
+import userRouter from "./src/routes/connect.route.js"
+import itemRouter from "./src/routes/item.route.js"
+import reservationRouter from "./src/routes/reservation.route.js"
+
 const app = express()
-const port = 3000
 
 app.use(express.json())
 
-const sequelize = new Sequelize('workshop_test', 'root', 'root', {
-    host: 'localhost',
-    dialect:'mysql'
-})
-
-const User = require('./src/schemas/user.schema')(sequelize)
-const Reservation = require('./src/schemas/reservation.schema')(sequelize)
-const Item = require('./src/schemas/item.schema')(sequelize)
-const ListItem = require('./src/schemas/listItems.schema')(sequelize)
-
-Reservation.belongsTo(User)
-Reservation.belongsTo(Item)
-Item.belongsTo(ListItem)
-
-sequelize.sync().then(() => {
+database.sequelize.sync().then(() => {
     console.log('BDD OK')
 })
+
+app.use('/user', userRouter)
+app.use('/items', itemRouter)
+app.use('/reservation', reservationRouter)
 
 app.get('/', (req, res) => res.status(200).send("IT's working chef"))
 
