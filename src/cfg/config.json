@@ -1,0 +1,7 @@
+{
+    "expressPort": 3000,
+    "dbName": "workshop_test",
+    "dbUsername": "root",
+    "dbPassword": "root",
+    "dbHost": "localhost"
+}

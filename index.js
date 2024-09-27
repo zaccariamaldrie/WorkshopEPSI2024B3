@@ -3,6 +3,7 @@ import database from "./src/cfg/database.js"
 import userRouter from "./src/routes/connect.route.js"
 import itemRouter from "./src/routes/item.route.js"
 import reservationRouter from "./src/routes/reservation.route.js"
+import config from "./src/cfg/config.json" with { type: "json" }
 
 const app = express()
 
@@ -18,4 +19,4 @@ app.use('/reservation', reservationRouter)
 
 app.get('/', (req, res) => res.status(200).send("IT's working chef"))
 
-app.listen(3000, () => console.log('Done.'))
+app.listen(config.expressPort, () => console.log('Done.'))

@@ -3,10 +3,10 @@ import userSchema from '../schemas/user.schema.js'
 import listItemsSchema from '../schemas/listItems.schema.js'
 import itemSchema from '../schemas/item.schema.js'
 import reservationSchema from '../schemas/reservation.schema.js'
+import config from "./config.json" with { type: "json" }
 
-
-const sequelize = new Sequelize('workshop_test', 'root', 'root', {
-    host: 'localhost',
+const sequelize = new Sequelize(config.dbName, config.dbUsername, config.dbPassword, {
+    host: config.dbHost,
     dialect:'mysql'
 })
 
